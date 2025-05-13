@@ -58,3 +58,29 @@ less2:
         add eax, 0x30
 
 loopNext2:
+        mov [msg + edi], al
+        inc edi
+        inc esi
+        mov al, 0x20
+        mov [msg + edi], al
+        inc edi
+        ;; loops here back to convert 1
+        jmp convert1
+
+printOutput:
+        mov eax, 4              ;syswrite
+        mov ebx, 1              ;stdout
+        mov ecx, msg
+        mov edx, lenMsg
+        int 0x80
+
+        ;; Print newline
+        mov eax, 4
+        mov ebx, 1
+        mov ecx, newline
+        mov edx, 1
+        int 0x80
+
+        mov eax, 1              ;sysexit
+        xor ebx, ebx
+        int 0x80
