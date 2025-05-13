@@ -62,7 +62,7 @@ loopNext2:
         inc edi
         inc esi
         mov al, 0x20
-        mov [msg + edi], al
+        mov [msg + edi], al        ; add space
         inc edi
         ;; loops here back to convert 1
         jmp convert1
